@@ -1,7 +1,11 @@
+#trabalha dados e tabelas
 import pandas as pd
 
+#divide em treinar e testar
 from sklearn.model_selection import train_test_split
+#algoritimo de I.A para as decisões
 from sklearn.ensemble import RandomForestClassifier
+#verifica a precisão dos modelos
 from sklearn.metrics import accuracy_score
 
 
@@ -43,7 +47,7 @@ X_treino, X_teste, y_treino, y_teste = train_test_split(
 )
 
 
-# Criando o modelo
+# Criando o modelo 
 modelo = RandomForestClassifier(
     n_estimators=100,
     random_state=42
@@ -56,15 +60,16 @@ modelo.fit(X_treino, y_treino)
 # Testando
 y_pred = modelo.predict(X_teste)
 
+#compara
 precisao = accuracy_score(y_teste, y_pred)
 
 print("Precisão:", precisao)
-
 
 # Nova previsão
 #focos/temperatura/umidade
 nova_regiao = [[55, 40, 25]]
 
+#analiza
 previsao = modelo.predict(nova_regiao)
 
 print("Risco previsto:", previsao[0])
